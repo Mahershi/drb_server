@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework import routers
 from .views import TestViewSet, UserViewSet, CreateExistingToken, ProductMetaViewset, CategoryViewSet
-from .views import BrandViewSet, ParameterViewSet, StoreViewSet
+from .views import BrandViewSet, ParameterViewSet, StoreViewSet, DiscountViewSet
 
 router = routers.DefaultRouter()
 router.register('test', TestViewSet)
@@ -11,7 +11,7 @@ router.register('category', CategoryViewSet)
 router.register('brand', BrandViewSet)
 router.register('parameters', ParameterViewSet)
 router.register('stores', StoreViewSet)
-
+router.register('discount', DiscountViewSet)
 
 
 urlpatterns = [

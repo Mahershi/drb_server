@@ -5,3 +5,4 @@ from .category_view import CategoryViewSet
 from .brand_view import BrandViewSet
 from .parameter_view import ParameterViewSet
 from .store_view import StoreViewSet
+from .discount_view import DiscountViewSet

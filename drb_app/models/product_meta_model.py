@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 
 class ProductMetaModel(models.Model):
     brand = models.ForeignKey('BrandModel', on_delete=models.SET_NULL, null=True, related_name='of_brand')
@@ -16,6 +16,11 @@ class ProductMetaModel(models.Model):
     on_sale = models.BooleanField(default=False)
     popular = models.BooleanField(default=False)
     strong = models.BooleanField(default=False)
+
+    date_created = models.DateField(default=datetime.date.today())
+
+    image = models.ImageField(upload_to='images', null=True, blank=True)
+
 
     def __str__(self):
         return self.brand.__str__() + ' ' + self.category.__str__() + ' ' + self.nic.__str__() + self.nic_unit.__str__() + ' ' + self.size.__str__() + self.size_unit.__str__()

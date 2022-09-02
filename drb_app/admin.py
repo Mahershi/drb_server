@@ -29,15 +29,17 @@ class UserAdmin(BaseUserAdmin):
 @admin.register(ProductMetaModel)
 class PrductMetaAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('brand', 'category', 'size', 'nic', 'price', 'on_sale', 'sale_price', 'popular', 'priority', 'discount', 'strong', 'nic_unit', 'size_unit')}),
+        (None, {'fields': ('brand', 'category', 'size', 'nic', 'price', 'on_sale', 'sale_price', 'popular', 'priority',
+                           'discount', 'strong', 'nic_unit', 'size_unit', 'date_created', 'image')}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('brand', 'category', 'size', 'nic', 'price', 'on_sale', 'sale_price', 'popular', 'priority', 'discount', 'strong', 'nic_unit', 'size_unit')}),
+        (None, {'fields': ('brand', 'category', 'size', 'nic', 'price', 'on_sale', 'sale_price', 'popular', 'priority',
+                           'discount', 'strong', 'nic_unit', 'size_unit', 'date_created', 'image')}),
 
     )
 
-    list_display = ('id', 'brand', 'category', 'nic', 'size', 'price')
+    list_display = ('id', 'brand', 'category', 'nic', 'size', 'price', 'on_sale', 'sale_price', 'strong', 'popular')
     list_filter = ('brand', 'category', 'nic', 'size')
     filter_horizontal = ()
     search_fields = ('brand', 'category')
@@ -191,11 +193,11 @@ class StockAdmin(admin.ModelAdmin):
 @admin.register(DisposableModel)
 class DisposableAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('product', 'flavour', 'description', 'stock', )}),
+        (None, {'fields': ('product', 'flavour', 'description', 'stock', 'date_created',)}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('product', 'flavour', 'description', 'stock',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'stock', 'date_created',)}),
 
     )
 
@@ -209,11 +211,11 @@ class DisposableAdmin(admin.ModelAdmin):
 @admin.register(JuiceModel)
 class JuiceAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('product', 'flavour', 'description', 'stock', )}),
+        (None, {'fields': ('product', 'flavour', 'description', 'stock',  'date_created',)}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('product', 'flavour', 'description', 'stock',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'stock', 'date_created',)}),
 
     )
 
@@ -227,11 +229,11 @@ class JuiceAdmin(admin.ModelAdmin):
 @admin.register(PodModel)
 class PodAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'stock', )}),
+        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'stock',  'date_created',)}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'stock',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'stock', 'date_created',)}),
 
     )
 

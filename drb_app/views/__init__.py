@@ -6,3 +6,6 @@ from .brand_view import BrandViewSet
 from .parameter_view import ParameterViewSet
 from .store_view import StoreViewSet
 from .discount_view import DiscountViewSet
+from .disposable_view import DisposableViewSet
+from .pod_view import PodViewSet
+from .juice_view import JuiceViewSet

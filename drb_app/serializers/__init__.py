@@ -7,3 +7,6 @@ from .discount_serializer import DiscountSerializer
 from .unit_serializer import UnitsSerializer
 from .parameter_serializer import ParameterSerializer
 from .store_serializer import StoreSerializer
+from .disposable_serializer import DisposableSerializer
+from .juice_serializer import JuiceSerializer
+from .pod_serializer import PodSerializer

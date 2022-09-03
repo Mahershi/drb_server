@@ -7,7 +7,9 @@ from .parameters_model import ParametersModels
 from .store_model import StoreModel
 from .units_model import UnitsModel
 from .product_meta_model import ProductMetaModel
-from .stock_model import StockModel
+from .diposable_stock_model import DisposableStockModel
 from .disposable_model import DisposableModel
 from .juice_model import JuiceModel
 from .pod_model import PodModel
+from .pod_stock_model import PodStockModel
+from .juice_stock_model import JuiceStockModel

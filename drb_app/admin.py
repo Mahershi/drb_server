@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import UserModel, TestModel, UnitsModel, ParametersModels, CategoryModel, BrandModel, DiscountModel
-from .models import StoreModel, ProductMetaModel, StockModel, DisposableModel, JuiceModel, PodModel
+from .models import StoreModel, ProductMetaModel, DisposableStockModel, DisposableModel, JuiceModel, PodModel
+from .models import PodStockModel, JuiceStockModel
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 
@@ -172,37 +173,71 @@ class UnitsAdmin(admin.ModelAdmin):
     ordering = ('unit_label',)
 
 
-@admin.register(StockModel)
-class StockAdmin(admin.ModelAdmin):
+@admin.register(DisposableStockModel)
+class DisposableStockAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('store', 'stock', )}),
+        (None, {'fields': ('store', 'stock', 'disposable')}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('store', 'stock', )}),
+        (None, {'fields': ('store', 'stock', 'disposable')}),
 
     )
 
-    list_display = ('id', 'store', 'stock', )
-    list_filter = ('store', 'stock', )
+    list_display = ('id', 'store', 'stock', 'disposable')
+    list_filter = ('store', 'disposable')
     filter_horizontal = ()
-    search_fields = ('store', 'stock', )
+    search_fields = ('store', 'stock', 'disposable')
+    ordering = ('store',)
+
+@admin.register(PodStockModel)
+class PodStockAdmin(admin.ModelAdmin):
+    fieldsets =(
+        (None, {'fields': ('store', 'stock', 'pod')}),
+    )
+
+    add_fieldsets = (
+        (None, {'fields': ('store', 'stock', 'pod')}),
+
+    )
+
+    list_display = ('id', 'store', 'stock', 'pod')
+    list_filter = ('store', 'pod')
+    filter_horizontal = ()
+    search_fields = ('store', 'stock', 'pod')
+    ordering = ('store',)
+
+@admin.register(JuiceStockModel)
+class JuiceStockAdmin(admin.ModelAdmin):
+    fieldsets =(
+        (None, {'fields': ('store', 'stock', 'juice')}),
+    )
+
+    add_fieldsets = (
+        (None, {'fields': ('store', 'stock', 'juice')}),
+
+    )
+
+    list_display = ('id', 'store', 'stock', 'juice')
+    list_filter = ('store', 'juice')
+    filter_horizontal = ()
+    search_fields = ('store', 'stock', 'juice')
     ordering = ('store',)
 
 
 @admin.register(DisposableModel)
 class DisposableAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('product', 'flavour', 'description', 'stock', 'date_created',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'date_created', 'image')}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('product', 'flavour', 'description', 'stock', 'date_created',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'date_created', 'image')}),
 
     )
 
-    list_display = ('id', 'product', 'flavour', 'stock')
-    list_filter = ('product', 'flavour', 'stock', )
+    list_display = ('id', 'product', 'flavour',)
+    list_filter = ('product', 'flavour', )
     filter_horizontal = ()
     search_fields = ('product', 'flavour', )
     ordering = ('product', 'flavour')
@@ -211,16 +246,16 @@ class DisposableAdmin(admin.ModelAdmin):
 @admin.register(JuiceModel)
 class JuiceAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('product', 'flavour', 'description', 'stock',  'date_created',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'date_created', 'image')}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('product', 'flavour', 'description', 'stock', 'date_created',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'date_created', 'image')}),
 
     )
 
-    list_display = ('id', 'product', 'flavour', 'stock')
-    list_filter = ('product', 'flavour', 'stock', )
+    list_display = ('id', 'product', 'flavour',)
+    list_filter = ('product', 'flavour', )
     filter_horizontal = ()
     search_fields = ('product', 'flavour', )
     ordering = ('product', 'flavour')
@@ -229,16 +264,16 @@ class JuiceAdmin(admin.ModelAdmin):
 @admin.register(PodModel)
 class PodAdmin(admin.ModelAdmin):
     fieldsets =(
-        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'stock',  'date_created',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'date_created', 'image')}),
     )
 
     add_fieldsets = (
-        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'stock', 'date_created',)}),
+        (None, {'fields': ('product', 'flavour', 'description', 'empty', 'date_created', 'image')}),
 
     )
 
-    list_display = ('id', 'product', 'flavour', 'stock')
-    list_filter = ('product', 'flavour', 'stock', 'empty', )
+    list_display = ('id', 'product', 'flavour', )
+    list_filter = ('product', 'flavour', 'empty', )
     filter_horizontal = ()
     search_fields = ('product', 'flavour', )
     ordering = ('product', 'flavour')

@@ -242,6 +242,11 @@ class DisposableAdmin(admin.ModelAdmin):
     search_fields = ('product', 'flavour', )
     ordering = ('product', 'flavour')
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'product':
+            kwargs['queryset'] = ProductMetaModel.objects.filter(category__exact=1)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 @admin.register(JuiceModel)
 class JuiceAdmin(admin.ModelAdmin):
@@ -260,6 +265,11 @@ class JuiceAdmin(admin.ModelAdmin):
     search_fields = ('product', 'flavour', )
     ordering = ('product', 'flavour')
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'product':
+            kwargs['queryset'] = ProductMetaModel.objects.filter(category__exact=2)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 @admin.register(PodModel)
 class PodAdmin(admin.ModelAdmin):
@@ -277,3 +287,8 @@ class PodAdmin(admin.ModelAdmin):
     filter_horizontal = ()
     search_fields = ('product', 'flavour', )
     ordering = ('product', 'flavour')
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'product':
+            kwargs['queryset'] = ProductMetaModel.objects.filter(category__exact=3)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)

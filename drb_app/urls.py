@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework import routers
 from .views import TestViewSet, UserViewSet, CreateExistingToken, ProductMetaViewset, CategoryViewSet
 from .views import BrandViewSet, ParameterViewSet, StoreViewSet, DiscountViewSet
-from .views import DisposableViewSet, PodViewSet, JuiceViewSet
+from .views import DisposableViewSet, PodViewSet, JuiceViewSet, OrderView
 
 router = routers.DefaultRouter()
 router.register('test', TestViewSet)
@@ -16,6 +16,7 @@ router.register('discount', DiscountViewSet)
 router.register('disposable', DisposableViewSet)
 router.register('pod', PodViewSet)
 router.register('juice', JuiceViewSet)
+router.register('orders', OrderView)
 
 
 

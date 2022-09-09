@@ -9,3 +9,4 @@ from .discount_view import DiscountViewSet
 from .disposable_view import DisposableViewSet
 from .pod_view import PodViewSet
 from .juice_view import JuiceViewSet
+from .order_view import OrderView

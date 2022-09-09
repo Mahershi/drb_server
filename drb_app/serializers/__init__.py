@@ -10,3 +10,4 @@ from .store_serializer import StoreSerializer
 from .disposable_serializer import DisposableSerializer
 from .juice_serializer import JuiceSerializer
 from .pod_serializer import PodSerializer
+from .order_serializer import OrderSerializer
